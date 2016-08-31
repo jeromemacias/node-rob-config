@@ -1,37 +1,27 @@
 import convict from 'convict';
+import path from 'path';
 import fs from 'fs';
 
-const conf = convict({
-    env: {
-        doc: 'The applicaton environment.',
-        format: ['production', 'staging', 'integration', 'development', 'test'],
-        default: 'development',
-        env: 'NODE_ENV',
-    },
-    api: {
-        port: {
-            doc: 'The API port',
-            format: 'port',
-            default: 3000,
-        },
-        timeout: {
-            doc: 'The API timeout',
-            format: 'nat',
-            default: 60 * 1000, // 1 minutes
-        },
-    }
-});
+// check and load convict schema
+const schemaFile = path.join(process.env.SMART_CONFIG_DIR, 'schema'));
+try {
+    fs.statSync(schemaFile + '.js'));
+} catch (e) {
+    throw new Error(`[smart-config] Schema file "${e.path}" does not exists.`);
+}
+const conf = convict(require(schemaFile));
 
 // check and load related environment config
-const configFile = process.env.CONFIG_DIR + conf.get('env');
+const configFile = path.join(process.env.SMART_CONFIG_DIR, conf.get('env'));
 try {
     fs.statSync(configFile + '.js'));
 } catch (e) {
-    throw new Error(`Config file "${e.path}" does not exists.`);
+    throw new Error(`[smart-config] Config file "${e.path}" does not exists.`);
 }
 const envConf = require(configFile);
 conf.load(envConf);
 
+// export utility methods and current config properties
 export function validate() {
     return conf.validate({ strict: true });
 }
