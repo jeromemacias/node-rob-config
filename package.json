@@ -1,0 +1,28 @@
+{
+  "name": "smart-config",
+  "version": "0.1.0",
+  "description": "Smart configuration module for nodejs",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jeromemacias/node-smart-config.git"
+  },
+  "keywords": [
+    "Configuration",
+    "Schema",
+    "Validation"
+  ],
+  "author": "Jérôme Macias <jerome.macias@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jeromemacias/node-smart-config/issues"
+  },
+  "homepage": "https://github.com/jeromemacias/node-smart-config#readme",
+  "dependencies": {
+    "convict": "~1.4.0",
+    "prettyjson": "~1.1.3"
+  }
+}
