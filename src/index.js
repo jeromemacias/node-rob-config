@@ -2,6 +2,11 @@ import convict from 'convict';
 import path from 'path';
 import fs from 'fs';
 
+const configDir = process.env.SMART_CONFIG_DIR;
+if (!configDir) {
+    throw new Error(`[smart-config] You must configure "SMART_CONFIG_DIR" environment variable`);
+}
+
 // check and load convict schema
 const schemaFile = path.join(process.env.SMART_CONFIG_DIR, 'schema'));
 try {
