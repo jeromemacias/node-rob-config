@@ -1,4 +1,5 @@
 # node-smart-config
+[![Build Status](https://travis-ci.org/jeromemacias/node-smart-config.svg?branch=master)](https://travis-ci.org/jeromemacias/node-smart-config)
 
 Smart configuration module for nodejs
 
