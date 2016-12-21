@@ -1,6 +1,7 @@
 import convict from 'convict';
 import path from 'path';
 import fs from 'fs';
+import prettyjson from 'prettyjson';
 
 const configDir = process.env.SMART_CONFIG_DIR;
 if (!configDir) {
@@ -8,22 +9,22 @@ if (!configDir) {
 }
 
 // check and load convict schema
-const schemaFile = path.join(process.env.SMART_CONFIG_DIR, 'schema'));
+const schemaFile = path.resolve(process.env.SMART_CONFIG_DIR, 'schema');
 try {
-    fs.statSync(schemaFile + '.js'));
+    fs.statSync(schemaFile + '.js');
 } catch (e) {
     throw new Error(`[smart-config] Schema file "${e.path}" does not exists.`);
 }
-const conf = convict(require(schemaFile));
+const conf = convict(require(schemaFile + '.js'));
 
 // check and load related environment config
-const configFile = path.join(process.env.SMART_CONFIG_DIR, conf.get('env'));
+const configFile = path.resolve(process.env.SMART_CONFIG_DIR, conf.get('env'));
 try {
-    fs.statSync(configFile + '.js'));
+    fs.statSync(configFile + '.js');
 } catch (e) {
     throw new Error(`[smart-config] Config file "${e.path}" does not exists.`);
 }
-const envConf = require(configFile);
+const envConf = require(configFile + '.js');
 conf.load(envConf);
 
 // export utility methods and current config properties
@@ -32,7 +33,7 @@ export function validate() {
 }
 
 export function show() {
-    return conf.toString();
+    return prettyjson.render(conf.getProperties());
 }
 
 export default conf.getProperties();
