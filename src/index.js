@@ -3,37 +3,53 @@ import path from 'path';
 import fs from 'fs';
 import prettyjson from 'prettyjson';
 
-const configDir = process.env.SMART_CONFIG_DIR;
-if (!configDir) {
-    throw new Error(`[smart-config] You must configure "SMART_CONFIG_DIR" environment variable`);
+const configDir = process.env.SMART_CONFIG_DIR || 'config';
+try {
+    const statDir = fs.statSync(configDir);
+    if (!statDir.isDirectory()) {
+        throw new Error('Not a directory');
+    }
+} catch (e) {
+    throw new Error(`[smart-config] Config directory "${e.path}" does not exists.`);
 }
 
 // check and load convict schema
-const schemaFile = path.resolve(process.env.SMART_CONFIG_DIR, 'schema');
+const schemaFile = path.resolve(configDir, 'schema.js');
 try {
-    fs.statSync(schemaFile + '.js');
+    const statFile = fs.statSync(schemaFile);
+    if (!statFile.isFile()) {
+        throw new Error('Not a file');
+    }
 } catch (e) {
     throw new Error(`[smart-config] Schema file "${e.path}" does not exists.`);
 }
-const conf = convict(require(schemaFile + '.js'));
+const conf = convict(require(schemaFile));
 
 // check and load related environment config
-const configFile = path.resolve(process.env.SMART_CONFIG_DIR, conf.get('env'));
+const env = process.env.NODE_ENV || 'development';
+const configFile = path.resolve(configDir, env + '.js');
 try {
-    fs.statSync(configFile + '.js');
+    const statFile = fs.statSync(configFile);
+    if (!statFile.isFile()) {
+        throw new Error('Not a file');
+    }
 } catch (e) {
     throw new Error(`[smart-config] Config file "${e.path}" does not exists.`);
 }
-const envConf = require(configFile + '.js');
+const envConf = require(configFile);
 conf.load(envConf);
 
 // export utility methods and current config properties
-export function validate() {
-    return conf.validate({ strict: true });
+export function properties() {
+    return conf.getProperties();
 }
 
 export function show() {
     return prettyjson.render(conf.getProperties());
 }
 
-export default conf.getProperties();
+export function validate() {
+    return conf.validate({ strict: true });
+}
+
+export default conf;

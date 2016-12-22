@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "Smart configuration module for nodejs, built on top of convict",
   "main": "lib/index.js",
+  "bin": "lib/command.js",
   "scripts": {
     "test": "make test"
   },
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/jeromemacias/node-smart-config#readme",
   "dependencies": {
+    "cli": "~1.0.1",
     "convict": "~1.5.0",
     "prettyjson": "~1.2.1"
   },

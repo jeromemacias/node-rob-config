@@ -8,9 +8,21 @@ const requireConfig = (dir) => {
     return require('../src');
 };
 
-describe('get', () => {
-    it('aggregated configuration', () => {
+describe('get / has', () => {
+    it('aggregated configuration access', () => {
         const { default: config } = requireConfig('valid');
+
+        assert.equal(config.has('env'), true);
+        assert.equal(config.get('env'), 'test');
+        assert.equal(config.get('api.port'), 3002);
+        assert.equal(config.get('api.timeout'), 60000);
+    });
+});
+
+describe('properties', () => {
+    it('aggregated configuration as object', () => {
+        const { properties } = requireConfig('valid');
+        const config = properties();
 
         const { env, api: { port, timeout } } = config;
         assert.equal(env, 'test');
