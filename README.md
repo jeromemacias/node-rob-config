@@ -1,11 +1,11 @@
-# smart-config
+# rob-config
 [![Build Status](https://travis-ci.org/jeromemacias/node-smart-config.svg?branch=master)](https://travis-ci.org/jeromemacias/node-smart-config)
 
-Smart configuration module for nodejs, built on top of [`convict`](https://github.com/mozilla/node-convict).
+Robust configuration module for nodejs, built on top of [`convict`](https://github.com/mozilla/node-convict).
 
 ## Installation
 
-`npm install smart-config`
+`npm install rob-config`
 
 ## Why another config package?
 
@@ -64,13 +64,13 @@ module.exports = {
 
 ### Display your builded configuration
 
-Run `./node_modules/.bin/smart-config show`:
+Run `./node_modules/.bin/rob-config show`:
 
 ![Display final configuration](example/screenshot/show.png?raw=true)
 
 ### Validate your configuration against schema
 
-Run `./node_modules/.bin/smart-config validate`:
+Run `./node_modules/.bin/rob-config validate`:
 
 ![Validate configuration ok](example/screenshot/validate-ok.png?raw=true)
 
@@ -81,8 +81,12 @@ In case of error:
 ### Use it in your project:
 
 ```js
-const config = require('smart-config');
+const config = require('rob-config');
 
 console.log(config.get('api.port'));
 
 ```
+
+### Change config dir
+
+You can set env variable `ROB_CONFIG_DIR` with the relative path of your project configuration directory.

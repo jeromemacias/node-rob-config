@@ -4,6 +4,8 @@ import 'source-map-support/register';
 import cli from 'cli';
 import { show as showConfiguration, validate as validateConfig } from './index';
 
+cli.setApp(__dirname + '/../package.json');
+
 cli.parse(null, {
     'show': 'Show your builded configuration depends on env',
     'validate': 'Validate your builded configuration depends on env',

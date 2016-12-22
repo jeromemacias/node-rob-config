@@ -1,7 +1,7 @@
 const { assert } = require('chai');
 
 const requireConfig = (dir) => {
-    process.env.SMART_CONFIG_DIR = 'test/fixtures/' + dir;
+    process.env.ROB_CONFIG_DIR = 'test/fixtures/' + dir;
     const resolved = require.resolve('../src');
     delete require.cache[resolved];
 

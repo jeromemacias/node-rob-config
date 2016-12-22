@@ -3,14 +3,14 @@ import path from 'path';
 import fs from 'fs';
 import prettyjson from 'prettyjson';
 
-const configDir = process.env.SMART_CONFIG_DIR || 'config';
+const configDir = process.env.ROB_CONFIG_DIR || 'config';
 try {
     const statDir = fs.statSync(configDir);
     if (!statDir.isDirectory()) {
         throw new Error('Not a directory');
     }
 } catch (e) {
-    throw new Error(`[smart-config] Config directory "${e.path}" does not exists.`);
+    throw new Error(`[rob-config] Config directory "${e.path}" does not exists.`);
 }
 
 // check and load convict schema
@@ -21,7 +21,7 @@ try {
         throw new Error('Not a file');
     }
 } catch (e) {
-    throw new Error(`[smart-config] Schema file "${e.path}" does not exists.`);
+    throw new Error(`[rob-config] Schema file "${e.path}" does not exists.`);
 }
 const conf = convict(require(schemaFile));
 
@@ -34,7 +34,7 @@ try {
         throw new Error('Not a file');
     }
 } catch (e) {
-    throw new Error(`[smart-config] Config file "${e.path}" does not exists.`);
+    throw new Error(`[rob-config] Config file "${e.path}" does not exists.`);
 }
 const envConf = require(configFile);
 conf.load(envConf);

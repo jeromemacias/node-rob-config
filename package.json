@@ -1,7 +1,7 @@
 {
-  "name": "smart-config",
+  "name": "rob-config",
   "version": "0.1.0",
-  "description": "Smart configuration module for nodejs, built on top of convict",
+  "description": "Robust configuration package for nodejs, built on top of convict",
   "main": "lib/index.js",
   "bin": "lib/command.js",
   "scripts": {
@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeromemacias/node-smart-config.git"
+    "url": "https://github.com/jeromemacias/node-rob-config.git"
   },
   "keywords": [
     "configuration",
@@ -19,9 +19,9 @@
   "author": "Jérôme Macias <jerome.macias@gmail.com>",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/jeromemacias/node-smart-config/issues"
+    "url": "https://github.com/jeromemacias/node-rob-config/issues"
   },
-  "homepage": "https://github.com/jeromemacias/node-smart-config#readme",
+  "homepage": "https://github.com/jeromemacias/node-rob-config#readme",
   "dependencies": {
     "cli": "~1.0.1",
     "convict": "~1.5.0",
