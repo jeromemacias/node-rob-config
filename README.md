@@ -72,7 +72,11 @@ Run `./node_modules/.bin/smart-config show`:
 
 Run `./node_modules/.bin/smart-config validate`:
 
-![Display configuration errors](example/screenshot/validate.png?raw=true)
+![Validate configuration ok](example/screenshot/validate-ok.png?raw=true)
+
+In case of error:
+
+![Validate configuration error](example/screenshot/validate-error.png?raw=true)
 
 ### Use it in your project:
 
