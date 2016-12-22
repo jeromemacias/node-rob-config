@@ -9,12 +9,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jeromemacias/node-smart-config.git"
+    "url": "https://github.com/jeromemacias/node-smart-config.git"
   },
   "keywords": [
-    "Configuration",
-    "Schema",
-    "Validation"
+    "configuration",
+    "schema",
+    "validation"
   ],
   "author": "Jérôme Macias <jerome.macias@gmail.com>",
   "license": "MIT",
@@ -36,5 +36,8 @@
     "chai": "~3.5.0",
     "eslint": "~3.12.2",
     "mocha": "~3.2.0"
+  },
+  "engines": {
+    "node": ">=6.0.0"
   }
 }
