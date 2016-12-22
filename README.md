@@ -53,7 +53,7 @@ module.exports = {
 
 Then, define the first config file.
 
-For example: `config/developement.js`
+For example: `config/development.js`
 ```js
 module.exports = {
     api: {
