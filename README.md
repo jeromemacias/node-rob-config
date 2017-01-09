@@ -78,7 +78,7 @@ In case of error:
 
 ![Validate configuration error](example/screenshot/validate-error.png?raw=true)
 
-### Use it in your project:
+### Use it in your project
 
 ```js
 const config = require('rob-config');

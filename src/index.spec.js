@@ -41,7 +41,7 @@ describe('validate', () => {
     it('invalid configuration', () => {
         const { validate } = requireConfig('invalid');
 
-        assert.throws(validate, Error, 'api.port: Ports must be within range 0 - 65535\napi.timeout: must be a positive integer');
+        assert.throws(validate, Error, 'api.port: ports must be within range 0 - 65535\napi.timeout: must be a positive integer');
     });
 });
 
@@ -51,4 +51,4 @@ describe('show', () => {
 
         assert.equal(show(), '\u001b[32menv: \u001b[39mtest\n\u001b[32mapi: \u001b[39m\n  \u001b[32mport: \u001b[39m   \u001b[34m3002\u001b[39m\n  \u001b[32mtimeout: \u001b[39m\u001b[34m60000\u001b[39m');
     });
-})
+});

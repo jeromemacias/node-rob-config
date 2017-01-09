@@ -12,9 +12,11 @@
     "url": "https://github.com/jeromemacias/node-rob-config.git"
   },
   "keywords": [
+    "config",
     "configuration",
     "schema",
-    "validation"
+    "validation",
+    "robust"
   ],
   "author": "Jérôme Macias <jerome.macias@gmail.com>",
   "license": "MIT",
@@ -23,18 +25,20 @@
   },
   "homepage": "https://github.com/jeromemacias/node-rob-config#readme",
   "dependencies": {
-    "cli": "~1.0.1",
-    "convict": "~1.5.0",
-    "prettyjson": "~1.2.1"
+    "chalk": "~1.1.3",
+    "convict": "~2.0.0",
+    "prettyjson": "~1.2.1",
+    "yargs": "~6.6.0"
   },
   "devDependencies": {
     "babel-cli": "~6.18.0",
     "babel-eslint": "~7.1.1",
-    "babel-preset-env": "~1.1.4",
     "babel-plugin-transform-object-rest-spread": "~6.20.2",
+    "babel-preset-env": "~1.1.7",
     "babel-register": "~6.18.0",
     "chai": "~3.5.0",
-    "eslint": "~3.12.2",
+    "eslint": "~3.13.1",
+    "eslint-plugin-babel": "~4.0.0",
     "mocha": "~3.2.0"
   },
   "engines": {
