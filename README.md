@@ -1,4 +1,5 @@
 # rob-config
+[![NPM version](http://img.shields.io/npm/v/rob-config.svg)](https://www.npmjs.org/package/rob-config)
 [![Build Status](https://travis-ci.org/jeromemacias/node-rob-config.svg?branch=master)](https://travis-ci.org/jeromemacias/node-rob-config)
 
 Robust configuration module for nodejs, built on top of [`convict`](https://github.com/mozilla/node-convict).
