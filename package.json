@@ -1,6 +1,6 @@
 {
   "name": "rob-config",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "description": "Robust configuration package for nodejs, built on top of convict",
   "main": "lib/index.js",
   "bin": "lib/command.js",
@@ -42,6 +42,6 @@
     "mocha": "~3.2.0"
   },
   "engines": {
-    "node": ">=6.0.0"
+    "node": ">=6.9.0"
   }
 }
