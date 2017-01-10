@@ -6,7 +6,7 @@ Robust configuration module for nodejs, built on top of [`convict`](https://gith
 
 ## Installation
 
-`npm install rob-config`
+`npm install rob-config --save`
 
 ## Why another config package?
 
