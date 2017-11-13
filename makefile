@@ -11,4 +11,4 @@ build:
 	./node_modules/.bin/babel -d lib/ src/ --ignore *.spec.js
 
 test:
-	NODE_ENV=test ./node_modules/.bin/mocha --compilers js:babel-register src/*.spec.js
+	NODE_ENV=test ./node_modules/.bin/mocha --require babel-register src/*.spec.js

@@ -49,7 +49,7 @@ export function show() {
 }
 
 export function validate() {
-    return conf.validate({ strict: true });
+    return conf.validate({ allowed: 'strict' });
 }
 
 export default conf;
