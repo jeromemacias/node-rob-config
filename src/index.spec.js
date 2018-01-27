@@ -10,7 +10,7 @@ const requireConfig = (dir) => {
 
 describe('get / has', () => {
     it('aggregated configuration access', () => {
-        const { default: config } = requireConfig('valid');
+        const config = requireConfig('valid');
 
         assert.equal(config.has('env'), true);
         assert.equal(config.get('env'), 'test');
@@ -22,9 +22,8 @@ describe('get / has', () => {
 describe('properties', () => {
     it('aggregated configuration as object', () => {
         const { properties } = requireConfig('valid');
-        const config = properties();
 
-        const { env, api: { port, timeout } } = config;
+        const { env, api: { port, timeout } } = properties();
         assert.equal(env, 'test');
         assert.equal(port, 3002);
         assert.equal(timeout, 60000);

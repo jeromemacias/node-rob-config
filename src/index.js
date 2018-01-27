@@ -52,4 +52,10 @@ export function validate() {
     return conf.validate({ allowed: 'strict' });
 }
 
-export default conf;
+export function get(name) {
+    return conf.get(name);
+}
+
+export function has(name) {
+    return conf.has(name);
+}
