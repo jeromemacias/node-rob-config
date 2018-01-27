@@ -16,5 +16,11 @@ module.exports = {
             format: 'nat',
             default: 60 * 1000, // 1 minutes
         },
+        secret: {
+            doc: 'The secreat API key',
+            format: String,
+            default: '',
+            sensitive: true
+        },
     }
 };

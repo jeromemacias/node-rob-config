@@ -45,7 +45,7 @@ export function properties() {
 }
 
 export function show() {
-    return prettyjson.render(conf.getProperties());
+    return prettyjson.render(JSON.parse(conf.toString()));
 }
 
 export function validate() {

@@ -49,6 +49,6 @@ describe('show', () => {
     it('pretty print configuration', () => {
         const { show } = requireConfig('valid');
 
-        assert.equal(show(), '\u001b[32menv: \u001b[39mtest\n\u001b[32mapi: \u001b[39m\n  \u001b[32mport: \u001b[39m   \u001b[34m3002\u001b[39m\n  \u001b[32mtimeout: \u001b[39m\u001b[34m60000\u001b[39m');
+        assert.equal(show(), '\u001b[32menv: \u001b[39mtest\n\u001b[32mapi: \u001b[39m\n  \u001b[32mport: \u001b[39m   \u001b[34m3002\u001b[39m\n  \u001b[32mtimeout: \u001b[39m\u001b[34m60000\u001b[39m\n  \u001b[32msecret: \u001b[39m [Sensitive]');
     });
 });
