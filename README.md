@@ -26,7 +26,8 @@ Here it is and it's very easy to migrate from `config` or `convict`.
 
 ## Usage
 
-Define a config schema, simple object (see https://github.com/mozilla/node-convict#the-schema for documentation about schema definition):
+Define a config schema, simple object.
+See https://github.com/mozilla/node-convict#the-schema for documentation about schema definition.
 
 For example: `config/schema.js`
 ```js
@@ -59,6 +60,26 @@ For example: `config/development.js`
 module.exports = {
     api: {
         port: 3001 // test with "nothing" value to see validation error
+    }
+};
+```
+
+You can, optionnaly, define a `config/formats.js` to add one or more custom format to convict.
+See https://github.com/mozilla/node-convict#custom-format-checking for documentation about custom formats.
+`convict.addFormats()` will be call under the hood.
+
+For exemple: `config/formats.js`
+```js
+module.exports = {
+    'float-percent': {
+        validate: function(val) {
+            if (val !== 0 && (!val || val > 1 || val < 0)) {
+                throw new Error('must be a float between 0 and 1, inclusive');
+            }
+        },
+        coerce: function(val) {
+            return parseFloat(val, 10);
+        }
     }
 };
 ```

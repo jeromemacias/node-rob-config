@@ -13,6 +13,15 @@ try {
     throw new Error(`[rob-config] Config directory "${e.path}" does not exists.`);
 }
 
+// check and load convict formats if availables
+const formatsFile = path.resolve(configDir, 'formats.js');
+try {
+    const statFile = fs.statSync(formatsFile);
+    if (statFile.isFile()) {
+        convict.addFormats(require(formatsFile));
+    }
+} catch (e) {}
+
 // check and load convict schema
 const schemaFile = path.resolve(configDir, 'schema.js');
 try {
@@ -40,22 +49,17 @@ const envConf = require(configFile);
 conf.load(envConf);
 
 // export utility methods and current config properties
-export function properties() {
+conf.properties = () => {
     return conf.getProperties();
-}
+};
 
-export function show() {
+conf.show = () => {
     return prettyjson.render(JSON.parse(conf.toString()));
-}
+};
 
-export function validate() {
-    return conf.validate({ allowed: 'strict' });
-}
+const baseValidate = conf.validate.bind(conf);
+conf.validate = function () {
+    return baseValidate({ allowed: 'strict' });
+};
 
-export function get(name) {
-    return conf.get(name);
-}
-
-export function has(name) {
-    return conf.has(name);
-}
+export default conf;

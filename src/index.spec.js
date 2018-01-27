@@ -8,12 +8,13 @@ const requireConfig = (dir) => {
     return require('../src');
 };
 
-describe('get / has', () => {
+describe('get / has / default', () => {
     it('aggregated configuration access', () => {
         const config = requireConfig('valid');
 
         assert.equal(config.has('env'), true);
         assert.equal(config.get('env'), 'test');
+        assert.equal(config.default('env'), 'development');
         assert.equal(config.get('api.port'), 3002);
         assert.equal(config.get('api.timeout'), 60000);
     });
@@ -49,5 +50,16 @@ describe('show', () => {
         const { show } = requireConfig('valid');
 
         assert.equal(show(), '\u001b[32menv: \u001b[39mtest\n\u001b[32mapi: \u001b[39m\n  \u001b[32mport: \u001b[39m   \u001b[34m3002\u001b[39m\n  \u001b[32mtimeout: \u001b[39m\u001b[34m60000\u001b[39m\n  \u001b[32msecret: \u001b[39m [Sensitive]');
+    });
+});
+
+describe('formats', () => {
+    it('add custom format', () => {
+        const { properties } = requireConfig('valid-formats');
+
+        const { env, api: { port, average } } = properties();
+        assert.equal(env, 'test');
+        assert.equal(port, 3002);
+        assert.equal(average, 0.3);
     });
 });
