@@ -27,6 +27,7 @@ Here it is and it's very easy to migrate from `config` or `convict`.
 ## Usage
 
 Define a config schema, simple object.
+
 See https://github.com/mozilla/node-convict#the-schema for documentation about schema definition.
 
 For example: `config/schema.js`
@@ -65,7 +66,9 @@ module.exports = {
 ```
 
 You can, optionnaly, define a `config/formats.js` to add one or more custom format to convict.
+
 See https://github.com/mozilla/node-convict#custom-format-checking for documentation about custom formats.
+
 `convict.addFormats()` will be call under the hood.
 
 For exemple: `config/formats.js`
@@ -112,3 +115,13 @@ console.log(config.get('api.port'));
 ### Change config dir
 
 You can set env variable `ROB_CONFIG_DIR` with the relative path of your project configuration directory.
+
+## Versioning
+
+To keep better organization of releases we follow the [Semantic Versioning 2.0.0](http://semver.org/) guidelines.
+
+See [Releases](https://github.com/jeromemacias/node-rob-config/releases) for detailed changelog.
+
+## License
+
+[MIT License](/LICENSE) © [Jérôme Macias](https://github.com/jeromemacias)
