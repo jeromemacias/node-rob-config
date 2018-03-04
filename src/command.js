@@ -2,8 +2,15 @@
 import 'source-map-support/register';
 
 import chalk from 'chalk';
+import yargonaut from 'yargonaut';
 import yargs from 'yargs';
-import { show as showConfiguration, validate as validateConfig } from './index';
+import conf, { show as showConfiguration, validate as validateConfig, describe } from './index';
+
+yargonaut
+    .style('blue', 'aliases:')
+    .helpStyle('green')
+    .errorsStyle('red')
+;
 
 yargs
     .command('show', 'Show your builded configuration depends on env', {}, () => {
@@ -19,6 +26,9 @@ yargs
             });
             console.log(chalk.black.bgRed('Configuration is not valid'));
         };
+    })
+    .command('describe', 'Show the schema description', {}, () => {
+        console.log(describe());
     })
     .demandCommand(1)
     .help()

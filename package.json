@@ -32,6 +32,7 @@
     "chalk": "~2.3.0",
     "convict": "~4.0.2",
     "prettyjson": "~1.2.1",
+    "yargonaut": "~1.1.2",
     "yargs": "~10.0.3"
   },
   "devDependencies": {

@@ -1,3 +1,4 @@
+import chalk from 'chalk';
 import convict from 'convict';
 import path from 'path';
 import fs from 'fs';
@@ -55,6 +56,38 @@ conf.properties = () => {
 
 conf.show = () => {
     return prettyjson.render(JSON.parse(conf.toString()));
+};
+
+conf.describe = () => {
+    function buildProperties(keys) {
+        return Object.keys(keys).reduce((items, key) => {
+            items[key] = keyFormat(keys[key]);
+    
+            return items;
+        }, {});
+    }
+    const keyFormat = (property) => {
+        if (property.properties) {
+            return buildProperties(property.properties);
+        }
+
+        const { doc, format, env } = property;
+        const defaultValue = property['default'];
+
+        let desc = `${doc} [${chalk.blue(format)}]`;
+        if (defaultValue) {
+            desc += `, default: ${chalk.yellow(defaultValue)}`;
+        }
+        if (env) {
+            desc += ` (env var: ${chalk.magenta(env)})`;
+        }
+
+        return desc;
+    };
+
+    const description = buildProperties(conf.getSchema().properties);
+
+    return prettyjson.render(description);
 };
 
 const baseValidate = conf.validate.bind(conf);

@@ -63,3 +63,11 @@ describe('formats', () => {
         assert.equal(average, 0.3);
     });
 });
+
+describe('describe', () => {
+    it('describe schema configuration', () => {
+        const { describe } = requireConfig('valid');
+
+        assert.equal(describe(), '\u001b[32menv: \u001b[39mThe applicaton environment. [\u001b[34mproduction,staging,integration,development,test\u001b[39m], default: \u001b[33mdevelopment\u001b[39m (env var: \u001b[35mNODE_ENV\u001b[39m)\n\u001b[32mapi: \u001b[39m\n  \u001b[32mport: \u001b[39m   The API port [\u001b[34mport\u001b[39m], default: \u001b[33m3000\u001b[39m\n  \u001b[32mtimeout: \u001b[39mThe API timeout [\u001b[34mnat\u001b[39m], default: \u001b[33m60000\u001b[39m\n  \u001b[32msecret: \u001b[39m The secreat API key [\u001b[34mstring\u001b[39m]');
+    });
+});
