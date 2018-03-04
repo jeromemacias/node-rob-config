@@ -103,6 +103,10 @@ In case of error:
 
 ![Validate configuration error](example/screenshot/validate-error.png?raw=true)
 
+### Display the schema description
+
+![Schema description](example/screenshot/describe.png?raw=true)
+
 ### Use it in your project
 
 ```js
