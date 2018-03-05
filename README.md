@@ -105,6 +105,8 @@ In case of error:
 
 ### Display the schema description
 
+Run `./node_modules/.bin/rob-config describe`:
+
 ![Schema description](example/screenshot/describe.png?raw=true)
 
 ### Use it in your project
