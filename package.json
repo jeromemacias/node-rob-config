@@ -1,6 +1,6 @@
 {
   "name": "rob-config",
-  "version": "4.1.1",
+  "version": "4.2.0",
   "description": "Robust configuration package for nodejs, built on top of convict",
   "main": "lib/index.js",
   "bin": "lib/command.js",
