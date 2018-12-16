@@ -25,6 +25,8 @@ yargs
                 console.log(chalk.bold.red(error));
             });
             console.log(chalk.black.bgRed('Configuration is not valid'));
+
+            process.exit(1);
         };
     })
     .command('describe', 'Show the schema description', {}, () => {
