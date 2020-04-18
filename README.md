@@ -1,5 +1,7 @@
 # rob-config
+
 [![NPM version](http://img.shields.io/npm/v/rob-config.svg)](https://www.npmjs.org/package/rob-config)
+![node-current](https://img.shields.io/node/v/rob-config)
 [![Build Status](https://travis-ci.org/jeromemacias/node-rob-config.svg?branch=master)](https://travis-ci.org/jeromemacias/node-rob-config)
 
 Robust configuration module for nodejs, built on top of [`convict`](https://github.com/mozilla/node-convict).
@@ -16,11 +18,11 @@ Robust configuration module for nodejs, built on top of [`convict`](https://gith
 
 So I wanted something:
 
-- Easy to use like `config`
-- With schema and documentation like `convict`
-- With possibility to override with env variable or command line argument like `convict`
-- With a command to validate config for dev AND before deployment to production
-- With a command to see the builded config depends on env and default value (easier to debug)
+-   Easy to use like `config`
+-   With schema and documentation like `convict`
+-   With possibility to override with env variable or command line argument like `convict`
+-   With a command to validate config for dev AND before deployment to production
+-   With a command to see the builded config depends on env and default value (easier to debug)
 
 Here it is and it's very easy to migrate from `config` or `convict`.
 
@@ -31,6 +33,7 @@ Define a config schema, simple object.
 See https://github.com/mozilla/node-convict#the-schema for documentation about schema definition.
 
 For example: `config/schema.js`
+
 ```js
 module.exports = {
     env: {
@@ -50,18 +53,19 @@ module.exports = {
             format: 'nat',
             default: 60 * 1000, // 1 minutes
         },
-    }
+    },
 };
 ```
 
 Then, define the first config file.
 
 For example: `config/development.js`
+
 ```js
 module.exports = {
     api: {
-        port: 3001 // test with "nothing" value to see validation error
-    }
+        port: 3001, // test with "nothing" value to see validation error
+    },
 };
 ```
 
@@ -72,18 +76,19 @@ See https://github.com/mozilla/node-convict#custom-format-checking for documenta
 `convict.addFormats()` will be call under the hood.
 
 For exemple: `config/formats.js`
+
 ```js
 module.exports = {
     'float-percent': {
-        validate: function(val) {
+        validate: function (val) {
             if (val !== 0 && (!val || val > 1 || val < 0)) {
                 throw new Error('must be a float between 0 and 1, inclusive');
             }
         },
-        coerce: function(val) {
+        coerce: function (val) {
             return parseFloat(val, 10);
-        }
-    }
+        },
+    },
 };
 ```
 
@@ -115,7 +120,6 @@ Run `./node_modules/.bin/rob-config describe`:
 const config = require('rob-config');
 
 console.log(config.get('api.port'));
-
 ```
 
 ### Change config dir
