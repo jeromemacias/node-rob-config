@@ -1,5 +1,8 @@
 import chalk from 'chalk';
 import convict from 'convict';
+import convict_format_with_validator from 'convict-format-with-validator';
+import convict_format_with_moment from 'convict-format-with-moment';
+import json5 from 'json5';
 import path from 'path';
 import fs from 'fs';
 import prettyjson from 'prettyjson';
@@ -33,6 +36,18 @@ try {
 } catch (e) {
     throw new Error(`[rob-config] Schema file "${e.path}" does not exists.`);
 }
+
+// Use this only if you use the "email", "ipaddress" or "url" format
+convict.addFormats(convict_format_with_validator)
+
+// Use this only if you use the "duration" or "timestamp" format
+convict.addFormats(convict_format_with_moment)
+
+// Use this only if you have a .json configuration file in JSON5 format
+// (i.e. with comments, etc.).
+convict.addParser({extension: 'json', parse: json5.parse})
+
+
 const conf = convict(require(schemaFile));
 
 // check and load related environment config
@@ -67,8 +82,8 @@ conf.describe = () => {
         }, {});
     }
     const keyFormat = (property) => {
-        if (property.properties) {
-            return buildProperties(property.properties);
+        if (property._cvtProperties) {
+            return buildProperties(property._cvtProperties);
         }
 
         const { doc, format, env } = property;
@@ -85,8 +100,7 @@ conf.describe = () => {
         return desc;
     };
 
-    const description = buildProperties(conf.getSchema().properties);
-
+    const description = buildProperties(conf.getSchema()._cvtProperties);
     return prettyjson.render(description);
 };
 
