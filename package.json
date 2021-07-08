@@ -30,7 +30,10 @@
   "homepage": "https://github.com/jeromemacias/node-rob-config#readme",
   "dependencies": {
     "chalk": "~4.0.0",
-    "convict": "~5.2.0",
+    "convict": "^6.1.0",
+    "convict-format-with-moment": "~6.0.1",
+    "convict-format-with-validator": "~6.0.1",
+    "json5": "~2.2.0",
     "prettyjson": "~1.2.1",
     "yargonaut": "~1.1.4",
     "yargs": "~15.3.1"
