@@ -29,11 +29,14 @@
   },
   "homepage": "https://github.com/jeromemacias/node-rob-config#readme",
   "dependencies": {
-    "chalk": "~4.0.0",
-    "convict": "~5.2.0",
-    "prettyjson": "~1.2.1",
-    "yargonaut": "~1.1.4",
-    "yargs": "~15.3.1"
+    "chalk": "^4.1.2",
+    "convict": "^6.2.1",
+    "convict-format-with-moment": "^6.2.0",
+    "convict-format-with-validator": "^6.2.0",
+    "json5": "^2.2.0",
+    "prettyjson": "^1.2.5",
+    "yargonaut": "^1.1.4",
+    "yargs": "^17.3.1"
   },
   "devDependencies": {
     "@babel/cli": "~7.8.4",
