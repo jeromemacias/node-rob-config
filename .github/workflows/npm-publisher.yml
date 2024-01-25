@@ -3,11 +3,14 @@ name: Publish Package to npmjs
 on:
   push:
     branches:
-      - master
+      - fix_npm-publisher
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v3
