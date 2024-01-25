@@ -1,6 +1,6 @@
 {
   "name": "rob-config",
-  "version": "6.0.0",
+  "version": "6.0.1",
   "description": "Robust configuration package for nodejs, built on top of convict",
   "main": "lib/index.js",
   "bin": "lib/command.js",
@@ -13,7 +13,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jeromemacias/node-rob-config.git"
+    "url": "https://github.com/Next-Interactive/node-rob-config"
   },
   "keywords": [
     "config",
@@ -24,10 +24,7 @@
   ],
   "author": "Jérôme Macias <jerome.macias@gmail.com>",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/jeromemacias/node-rob-config/issues"
-  },
-  "homepage": "https://github.com/jeromemacias/node-rob-config#readme",
+  "homepage": "https://github.com/Next-Interactive/node-rob-config#readme",
   "dependencies": {
     "chalk": "~4.0.0",
     "convict": "~5.2.0",

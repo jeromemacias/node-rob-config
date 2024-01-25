@@ -19,7 +19,7 @@ const formatsFile = path.resolve(configDir, 'formats.js');
 try {
     const statFile = fs.statSync(formatsFile);
     if (statFile.isFile()) {
-        convict.addFormats(require(formatsFile));
+        convict.addFormats(require(/* webpackIgnore: true */formatsFile));
     }
 } catch (e) {}
 
@@ -33,7 +33,7 @@ try {
 } catch (e) {
     throw new Error(`[rob-config] Schema file "${e.path}" does not exists.`);
 }
-const conf = convict(require(schemaFile));
+const conf = convict(require(/* webpackIgnore: true */schemaFile));
 
 // check and load related environment config
 const env = process.env.NODE_ENV || 'development';
@@ -46,7 +46,7 @@ try {
 } catch (e) {
     throw new Error(`[rob-config] Config file "${e.path}" does not exists.`);
 }
-const envConf = require(configFile);
+const envConf = require(/* webpackIgnore: true */configFile);
 conf.load(envConf);
 
 // export utility methods and current config properties
